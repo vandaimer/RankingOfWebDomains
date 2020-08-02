@@ -16,8 +16,8 @@ import (
 )
 
 type Domain struct {
-	name       string
-	occurrence int
+	Name       string
+	Occurrence int
 }
 
 func GetListOfDomainsSortedByNumOfOccurrences(fileName string) ([]Domain, error) {
