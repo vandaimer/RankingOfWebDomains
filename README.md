@@ -51,8 +51,8 @@ docker run --rm ranking_of_web_domains
 
 - main.go - **Entry point of the program**
 - *customerimporter package*
---  interview.go - **Business logic of the program**
--- interview_test.go - **Unit Tests of business logic**
+- customerimporter/interview.go - **Business logic of the program**
+- customerimporter/interview_test.go - **Unit Tests of business logic**
 
 ## Improvements
 - Make docker image get **file.csv** from a URL/volume
