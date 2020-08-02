@@ -64,3 +64,33 @@ func TestCountOccurrencesForEachDomain(t *testing.T) {
                 }
         }
 }
+
+func TestGetListOfDomains(t *testing.T) {
+        domain := "domain.com"
+        email := "customer_email@" + domain
+        lines := [][]string{
+                []string{
+                        "first_name",
+                        "last_name",
+                        "email",
+                        "gender",
+                        "ip_address",
+                },
+
+                []string{
+                        "CustomerName",
+                        "CustomerLastname",
+                        email,
+                },
+        }
+
+        expected := []string{
+                domain,
+        }
+
+        result := getListOfDomains(lines)
+
+        if result[0] != expected[0] {
+                t.FailNow()
+        }
+}
