@@ -43,3 +43,24 @@ func TestReturnErrorWhenPassInvalidEmailToGetDomainFromEmail(t *testing.T) {
                 t.FailNow()
         }
 }
+
+func TestCountOccurrencesForEachDomain(t *testing.T) {
+	domains := []string{
+                "linkedin.com",
+                "teamwork.com",
+                "teamwork.com",
+        }
+
+        expected := map[string]int{
+                "linkedin.com": 1,
+                "teamwork.com": 2,
+        }
+
+        result := countOccurrencesForEachDomain(domains)
+
+        for key, value := range result {
+                if expected[key] != value {
+                        t.FailNow()
+                }
+        }
+}
