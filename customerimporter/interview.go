@@ -8,11 +8,16 @@ package customerimporter
 import (
 	"encoding/csv"
 	"errors"
-	"fmt"
 	"io"
+	"log"
 	"os"
 	"sort"
 	"strings"
+)
+
+var (
+	WarningLogger *log.Logger = log.New(os.Stdout, "WARNING: ", log.Ldate|log.Ltime|log.Lshortfile)
+	ErrorLogger   *log.Logger = log.New(os.Stdout, "ERROR: ", log.Ldate|log.Ltime|log.Lshortfile)
 )
 
 type Domain struct {
@@ -21,10 +26,12 @@ type Domain struct {
 }
 
 func GetListOfDomainsSortedByNumOfOccurrences(fileName string) ([]Domain, error) {
+
+
 	lines, err := readLines(fileName)
 
 	if err != nil {
-		fmt.Println("Error on loading the file")
+                ErrorLogger.Println("Error on loading the file.")
 		return nil, err
 	}
 
@@ -61,13 +68,15 @@ func getListOfDomains(lines [][]string) []string {
 }
 
 func getDomainFromEmail(email string) (string, error) {
-        // Here we can improve to use regex
-        // I'll keep in this way for the first version of this code
+	// Here we can improve to use regex
+	// I'll keep in this way for the first version of this code
 
 	s := strings.Split(email, "@")
 
 	if len(s) == 1 {
-		return "", errors.New("Invalid email could not be parsed.")
+                msg := "Invalid email could not be parsed. Email: " + email
+                WarningLogger.Println(msg)
+		return "", errors.New(msg)
 	}
 
 	return s[1], nil
