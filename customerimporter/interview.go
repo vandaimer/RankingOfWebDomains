@@ -27,11 +27,10 @@ type Domain struct {
 
 func GetListOfDomainsSortedByNumOfOccurrences(fileName string) ([]Domain, error) {
 
-
 	lines, err := readLines(fileName)
 
 	if err != nil {
-                ErrorLogger.Println("Error on loading the file.")
+		ErrorLogger.Println("Error on loading the file.")
 		return nil, err
 	}
 
@@ -74,8 +73,8 @@ func getDomainFromEmail(email string) (string, error) {
 	s := strings.Split(email, "@")
 
 	if len(s) == 1 {
-                msg := "Invalid email could not be parsed. Email: " + email
-                WarningLogger.Println(msg)
+		msg := "Invalid email could not be parsed. Email: " + email
+		WarningLogger.Println(msg)
 		return "", errors.New(msg)
 	}
 
