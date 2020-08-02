@@ -23,5 +23,7 @@ func main() {
                 os.Exit(0)
 	}
 
-	fmt.Println(len(domains))
+        for _,domain := range domains {
+                fmt.Printf("Domain: %s | Occurrences: %d\n", domain.Name, domain.Occurrence)
+        }
 }
