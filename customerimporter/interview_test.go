@@ -18,7 +18,7 @@ func TestSortByDomain(t *testing.T) {
         result := sortByDomain(domains)
 
         for index, item := range result {
-                if domain := expected[index]; domain.name != item.name {
+                if domain := expected[index]; domain.Name != item.Name {
                         t.FailNow()
                 }
         }
